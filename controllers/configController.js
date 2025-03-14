@@ -45,6 +45,13 @@ module.exports = (req, res) => {
     // the readdir function uses process.cwd() as the start point whereas require uses __dirname
 
     const configJSON = recurDir(root_dir)
+    // write to ./data/video.json
+
+    fs.writeFileSync('./data/video.json', JSON.stringify(configJSON))
     res.json(configJSON)
+
+    // write the config file to data/videos.json
+
+    
 }
 
