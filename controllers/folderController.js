@@ -3,8 +3,16 @@ const url = require('url');
 const mime = require('mime-types');
 const { replaceT } = require('../modules/template');
 
-const videoD = fs.readFileSync(`${__dirname}/../data/videos.json`);
-const fileObjs = JSON.parse(videoD);
+// Adding try catch block around videoD
+let videoD
+
+try {
+    videoD = fs.readFileSync(`${__dirname}/../data/videos.json`);
+} catch(err) {
+    videoD = "[]"
+}
+
+const fileObjs = JSON.parse(videoD); 
 
 // load Templates
 const indexT = fs.readFileSync(`${__dirname}/../templates/index.html`, {
