@@ -75,7 +75,6 @@ exports.serve = (req, res) => {
 
   req.currDir.forEach((element) => {
     let name, link, type, newC = "";
-
     if (element.type === 'dir') {
       type = 'folder';
       name = element.name;

@@ -26,14 +26,14 @@ const recurDir = (root_dir, current_dir = "") => {
 	}
 	else {
 	    // the current file is a folder
-	    tmp_obj.type = "folder"
+	    tmp_obj.type = "dir"
 	    tmp_obj.vidArr = recurDir(name)
 	}
 
 	// append objects to array
 	objs.push(tmp_obj)
     }
-
+    
     return objs
 }
 
@@ -46,12 +46,10 @@ module.exports = (req, res) => {
 
     const configJSON = recurDir(root_dir)
     // write to ./data/video.json
-
-    fs.writeFileSync('./data/video.json', JSON.stringify(configJSON))
+    
+    fs.writeFileSync('./data/videos.json', JSON.stringify(configJSON))
     res.json(configJSON)
 
-    // write the config file to data/videos.json
-
-    
+    // write the config file to data/videos.json    
 }
 
